@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     function moveToSelected(element) {
 
         if (element == "next") {
@@ -31,6 +32,10 @@ $(document).ready(function () {
             $('.selected').find('iframe').css({ display: "block" });
             $('.selected').find('img').css({ display: "none" });
         }, 500)
+        var barWidth =
+            (($('#carousel').find('.selected').index() + 1) /
+                $('#carousel').children().length) * 100
+        $('#slider-progress-bar').css({ width: barWidth + "%" })
 
     }
 
