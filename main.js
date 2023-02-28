@@ -55,21 +55,6 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    // var iframe = $('#carousel div iframe')[0];
-    // console.log(iframe);
-    // iframe.document.addEventListener('click', function (event) {
-    //     console.log(event);
-    // }, false);
-
-    $(function () {
-        $("#myFrame").click(function () {
-            // document.getElementById("myFrame").contentWindow.addEventListener('click', function (event) {
-            //     console.log(event);
-            // }, false);;
-            console.log("00");
-        });
-    });
-
     $('#carousel div').click(function () {
         moveToSelected($(this));
     });
