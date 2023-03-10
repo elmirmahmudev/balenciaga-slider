@@ -1,6 +1,11 @@
 $(document).ready(function () {
-
+    function updateTitle() {
+        var selectedTitle = $('.selected').find('.carousel__item-title-hidden > a');
+        console.log(selectedTitle);
+        $('.carousel__item-title').html(selectedTitle.clone())
+    }
     function moveToSelected(element) {
+        var carousel = $("#carousel");
 
         if (element == "next") {
             var selected = $(".selected").next();
@@ -12,8 +17,19 @@ $(document).ready(function () {
 
         var next = $(selected).next();
         var prev = $(selected).prev();
-        var prevSecond = $(prev).prev();
+
         var nextSecond = $(next).next();
+        var prevSecond = $(prev).prev();
+
+        if (nextSecond.next().length === 0) {
+            var firstChild = $("#carousel > div:first-child");
+            carousel.append(firstChild);
+        }
+
+        if (prevSecond.prev().length === 0) {
+            var lastChild = $("#carousel > div:last-child");
+            carousel.prepend(lastChild);
+        }
 
         $(selected).removeClass().addClass("selected");
 
@@ -27,19 +43,22 @@ $(document).ready(function () {
         $(prevSecond).prevAll().removeClass().addClass('hideLeft');
 
         $('iframe').css({ display: "none" });
+        // $('.carousel__item-title').css({ display: "none" });
         $('img').css({ display: "block" });
         setTimeout(() => {
             $('.selected').find('iframe').css({ display: "block" });
+            // $('.selected').find('.carousel__item-title').css({ display: "block" });
             $('.selected').find('img').css({ display: "none" });
-        }, 500)
+        }, 1000)
         var barWidth =
-            (($('#carousel').find('.selected').index() + 1) /
+            (($('#carousel').find('.selected').attr("id").split("_")[1]) /
                 $('#carousel').children().length) * 100
-        $('#slider-progress-bar').css({ width: barWidth + "%" })
+        $('#slider-progress-bar').css({ width: barWidth + "%" });
+
+        updateTitle();
 
     }
 
-    // Eventos teclado
     $(document).keydown(function (e) {
         switch (e.which) {
             case 37: // left
@@ -55,7 +74,7 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $('#carousel div').click(function () {
+    $('#carousel > div').click(function () {
         moveToSelected($(this));
     });
 
@@ -66,4 +85,11 @@ $(document).ready(function () {
     $('#next').click(function () {
         moveToSelected('next');
     });
+
+    $(".carousel__item-title").on("click", function (event) {
+        event.stopPropagation();
+    });
+
+    updateTitle();
+
 })
