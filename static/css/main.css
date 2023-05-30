@@ -9,11 +9,7 @@ main {
 }
 
 #carousel {
-  position: relative;
   height: 610px;
-  top: 50%;
-  margin-bottom: -10px;
-  transform: translateY(-50%);
   overflow: hidden;
 }
 #carousel > div {
@@ -93,8 +89,8 @@ main {
   opacity: 0.4;
 }
 .slider-footer {
-  margin: 25px;
-  margin-top: 80px;
+  margin: 0 25px;
+  padding-bottom: 50px;
 }
 .buttons {
   display: flex;
@@ -168,7 +164,7 @@ a:active {
 }
 
 .carousel-header {
-  position: relative;
+  height: 48px;
 }
 
 .carousel-header .close-icon {
