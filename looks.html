@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+  </head>
+  <body>
+    <div class="carousel-header">
+      <a href="/lookbook1.html">
+        <img
+          class="grid-icon"
+          src="/static/img/icons8-view-carousel-30.png"
+          alt=""
+          srcset=""
+        />
+      </a>
+      <a href="/404">
+        <img class="close-icon" src="/static/img/close.svg" alt="" srcset="" />
+      </a>
+    </div>
+    <div class="grid-container">
+      <div class="grid-wrapper">
+        <div class="look-item" data-look="1">
+          <img
+            src="https://videogame.balenciaga.com/static/6c7c89232f0e961760da4dffcf6267a3/19ca5/FALL21-Lookbook_Renders_Jordan_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="2">
+          <img
+            src="https://videogame.balenciaga.com/static/7d726c1a7b176a26c04c291adcd4f22d/19ca5/FALL21-Lookbook_Renders_Dina_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="3">
+          <img
+            src="https://videogame.balenciaga.com/static/8a1793a1e6ed675183630c11d9b934a7/19ca5/FALL21-Lookbook_Renders_Minttu_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="4">
+          <img
+            src="https://videogame.balenciaga.com/static/3dea846e2fa9f7b810cef6b44853f9a1/19ca5/FALL21-Lookbook_Renders_Sasha_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="5">
+          <img
+            src="https://videogame.balenciaga.com/static/6c7c89232f0e961760da4dffcf6267a3/19ca5/FALL21-Lookbook_Renders_Jordan_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="6">
+          <img
+            src="https://videogame.balenciaga.com/static/7d726c1a7b176a26c04c291adcd4f22d/19ca5/FALL21-Lookbook_Renders_Dina_390x550px.png"
+          />
+        </div>
+        <div class="look-item" data-look="7">
+          <img
+            src="https://videogame.balenciaga.com/static/8a1793a1e6ed675183630c11d9b934a7/19ca5/FALL21-Lookbook_Renders_Minttu_390x550px.png"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".look-item").on("click", function () {
+      var look = $(this).data("look");
+      console.log(look);
+      location.href = "/lookbook1.html?look=" + look;
+    });
+  });
+</script>

@@ -16,6 +16,7 @@ main {
   position: absolute;
   transition: transform 1s, left 1s, opacity 1s, z-index 0s;
   opacity: 1;
+  cursor: pointer;
 }
 #carousel div img {
   width: 400px;
@@ -181,4 +182,52 @@ a:active {
   top: 10px;
   right: 44px;
   cursor: pointer;
+}
+
+.grid-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.grid-wrapper::after {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  pointer-events: none;
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #000;
+}
+@media (max-width: 992px) {
+  .look-item {
+    max-height: 320px;
+  }
+  .grid-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .look-item {
+    max-height: 350px;
+  }
+  .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.look-item {
+  box-sizing: border-box;
+  display: flex;
+  max-height: 350px;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  cursor: pointer;
+}
+
+.look-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }

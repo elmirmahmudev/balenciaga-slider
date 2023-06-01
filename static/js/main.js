@@ -1,7 +1,14 @@
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    return decodeURI(results[1]) || 0;
+}
+
 $(document).ready(function () {
     function updateTitle() {
         var selectedTitle = $('.selected').find('.carousel__item-title-hidden > a');
-        console.log(selectedTitle);
         $('.carousel__item-title').html(selectedTitle.clone())
     }
     function moveToSelected(element) {
@@ -75,7 +82,21 @@ $(document).ready(function () {
     });
 
     $('#carousel > div').click(function () {
-        moveToSelected($(this));
+        var clickedIndex = $(this).index();
+        var currentIndex = $(".selected").index();
+        var direction = "";
+
+        if (clickedIndex > currentIndex) {
+            direction = "next"
+        } else if (clickedIndex < currentIndex) {
+            direction = "prev"
+        }
+        if (direction) {
+            for (let index = 0; index < Math.abs(clickedIndex - currentIndex); index++) {
+                moveToSelected(direction);
+            }
+        }
+        console.log(clickedIndex, currentIndex, direction);
     });
 
     $('#prev').click(function () {
@@ -91,5 +112,8 @@ $(document).ready(function () {
     });
 
     updateTitle();
+
+    var look = $.urlParam('look');
+    $("#item_" + look).click();
 
 })
